@@ -2,26 +2,28 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
-## Development server
+# setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm install`
 
-## Code scaffolding
+(`npm install -g angular-cli`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`ng build --prod`
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Save visual studio solution
 
-## Running unit tests
+Restore nuget packages
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+\*Run
 
-## Running end-to-end tests
+\*If IIS says the url is wrong look in Documents\IISExpress\config\applicationhost.config for what ports localhost have registered and change the project port to that
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+To run with `ng serve` instead change:
 
-## Further help
+`index.hmtl` - `<base href>` to `/`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`app/people.service.ts`	- `apiUrl` to `http://localhost:<your_server_port>/Api`
+
+
+then run the server and view the site on :4200 or whatever port `ng serve` gives you
