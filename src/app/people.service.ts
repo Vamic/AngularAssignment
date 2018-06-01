@@ -7,7 +7,7 @@ import { Person, Country } from './classes';
     providedIn: 'root',
 })
 export class DataService {
-    private apiURL: string = "http://localhost:55924/Api";
+    private apiURL: string = "/Api";
     private peopleSubject: Subject<Person[]>;
     private selectedSubject: Subject<Person>;
     private countriesObservable: Observable<Country[]>;
