@@ -1,0 +1,21 @@
+<table>
+	<thead>
+		<tr>
+			<td (click)="sortBy('Id')">ID</td>
+			<th (click)="sortBy('FirstName')">First Name</th>
+			<th (click)="sortBy('LastName')">Last Name</th>
+			<th (click)="sortBy('Country.Name')">Country</th>
+		</tr>
+	</thead>
+	<tbody>
+    <tr *ngFor="let person of (people | sort:sortOptions)" 
+        (click)="setSelectedPerson(person.Id)"
+        [class.selected-row]="selected && selected.Id == person.Id"
+        id="person-{{person.Id}}">
+			<td>{{person.Id}}.</td>
+			<td>{{person.FirstName}}</td>
+			<td>{{person.LastName}}</td>
+			<td>{{person.Country.Name}}</td>
+		</tr>
+	</tbody>
+</table>

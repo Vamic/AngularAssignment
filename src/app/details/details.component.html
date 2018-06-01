@@ -1,0 +1,65 @@
+<span *ngIf="selected;then edit_form else new_form"></span>
+
+<ng-template #edit_form>
+    <form (ngSubmit)="editSelected()" #personForm="ngForm">
+        <label for="id">ID</label>
+        <br />
+        <input type="number" [ngModel]="selected.Id" name="id"  #id="ngModel" readonly />
+        <br />
+        <label for="first_name">First Name</label>
+        <br />
+        <input type="text" required [(ngModel)]="selected.FirstName" name="first_name" #first_name="ngModel" />
+        <div class="validation-info" [hidden]="first_name.valid || first_name.pristine">
+            First Name is required
+        </div>
+        <br />
+        <label for="last_name">Last Name</label>
+        <br />
+        <input type="text" required [(ngModel)]="selected.LastName" name="last_name" #last_name="ngModel" />
+        <div class="validation-info" [hidden]="last_name.valid || last_name.pristine">
+            Last Name is required
+        </div>
+        <br />
+        <label for="country">Country</label>
+        <br />
+        <select required [(ngModel)]="selected.Country" name="country" #country="ngModel">
+            <option *ngFor="let country of countries" [ngValue]="country"> {{country.Name}} </option>
+        </select>
+        <div class="validation-info" [hidden]="country.valid || country.pristine">
+            Country is required
+        </div>
+        <br />
+        <input type="submit" value="Save Changes" [disabled]="!personForm.form.valid" />
+        <input type="button" (click)="deleteSelected()" value="Delete {{selected.FirstName}}" [disabled]="!id.pristine" />
+    </form>
+</ng-template>
+
+
+<ng-template #new_form>
+    <form (ngSubmit)="submitNew()" #personForm="ngForm">
+        <label for="first_name">First Name</label>
+        <br />
+        <input type="text" required [(ngModel)]="formmodel.FirstName" name="first_name" #first_name="ngModel" />
+        <div class="validation-info" [hidden]="first_name.valid || first_name.pristine">
+            First Name is required
+        </div>
+        <br />
+        <label for="last_name">Last Name</label>
+        <br />
+        <input type="text" required [(ngModel)]="formmodel.LastName" name="last_name" #last_name="ngModel" />
+        <div class="validation-info" [hidden]="last_name.valid || last_name.pristine">
+            Last Name is required
+        </div>
+        <br />
+        <label for="country">Country</label>
+        <br />
+        <select required [(ngModel)]="formmodel.Country" name="country" #country="ngModel">
+            <option *ngFor="let country of countries" [ngValue]="country"> {{country.Name}} </option>
+        </select>
+        <div class="validation-info" [hidden]="country.valid || country.pristine">
+            Country is required
+        </div>
+        <br />
+        <input type="submit" value="Save {{formmodel.FirstName}}" [disabled]="!personForm.form.valid" />
+    </form>
+</ng-template>

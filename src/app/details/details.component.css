@@ -1,0 +1,3 @@
+.validation-info:not([hidden]) {
+    display: inline;
+}
