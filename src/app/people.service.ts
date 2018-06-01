@@ -60,7 +60,7 @@ export class DataService {
 
     setSelectedPerson(id): void {
         console.log("Selected " + id);
-        this.http.get<Person>(`http://localhost:55924/Api/People/${id}`)
+        this.http.get<Person>(`${this.apiURL}/People/${id}`)
             .subscribe(person => this.selectedSubject.next(person));
     }
 
